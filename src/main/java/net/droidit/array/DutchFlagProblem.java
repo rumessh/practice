@@ -1,4 +1,4 @@
-package net.droidit;
+package net.droidit.array;
 
 public class DutchFlagProblem
 {
