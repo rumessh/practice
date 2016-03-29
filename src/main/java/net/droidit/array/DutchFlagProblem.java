@@ -17,20 +17,23 @@ public class DutchFlagProblem
         int n = array.length;
         int pivot = array[pivotIndex];
         int element = array[i];
-        int lastIndex = n;
+        int lastIndex = n-1;
         int firstIndex = 0;
         
         while(i < n)
         {
             if(element < pivot)
             {
-                ArrayUtils.swap(array, i, firstIndex++);
+                ArrayUtils.swap(array, i++, firstIndex++);
             }
             else if(element > pivot)
             {
                 ArrayUtils.swap(array, i, lastIndex--);
             }
-            i++;
+            else
+            {
+                i++;    
+            }
         }
     }
 }
