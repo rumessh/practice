@@ -1,4 +1,4 @@
-package net.droidit
+package net.droidit.array
 
 import spock.lang.Specification
 import java.util.Arrays
@@ -13,6 +13,6 @@ public class DutchFlagProblemSpec extends Specification
         when:
             dutchFlagProblem.dutchFlagPartition();
         then:
-            expect Arrays.asList(array), contains(Arrays.asList(1, 3, 4, 4, 12, 22))
+            array == [1, 3, 4, 4, 12, 22]
     }
 }

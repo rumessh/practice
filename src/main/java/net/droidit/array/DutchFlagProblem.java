@@ -16,12 +16,12 @@ public class DutchFlagProblem
         int i = 0;
         int n = array.length;
         int pivot = array[pivotIndex];
-        int element = array[i];
         int lastIndex = n-1;
         int firstIndex = 0;
         
-        while(i < n)
+        while(i < lastIndex)
         {
+        	int element = array[i];
             if(element < pivot)
             {
                 ArrayUtils.swap(array, i++, firstIndex++);
