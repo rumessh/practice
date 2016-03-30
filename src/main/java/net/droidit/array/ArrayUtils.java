@@ -11,17 +11,11 @@ public class ArrayUtils
         arr[i2] = temp;
     }
     
-    public static int[] generateRandomArray(int size)
+    public static int[] generateRandomArray(int limit)
     {
-    	Random random = new Random();
-    	
-    	int[] array = new int[size];
-    	
-    	for(int i=0 ; i< size; i++)
-    	{
-    		array[i] = random.nextInt();
-    	}
-    	
-    	return array;
+    	return new Random()
+    			.ints()
+    			.limit(limit)
+    			.toArray();
     }
 }
