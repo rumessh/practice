@@ -18,4 +18,11 @@ public class ArrayUtils
     			.limit(limit)
     			.toArray();
     }
+    
+    public static int[] generateRandomShuffledArray(int limit, int start, int bound)
+    {
+    	return new Random()
+    			.ints(limit, start, bound)
+    			.toArray();
+    }
 }
