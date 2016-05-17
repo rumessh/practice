@@ -13,11 +13,3 @@ public class ReverseLinkedList {
 		return curr;
 	}
 }
-
-class ListNode<T> {
-	public ListNode(T data) {
-		this.data = data;
-	}
-	T data;
-	public ListNode<T> next;
-}
