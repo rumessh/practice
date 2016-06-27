@@ -9,7 +9,7 @@ class ReverseLinkedListSpec extends Specification {
 			def rand = new Random()
 			def head = new ListNode<Integer>(rand.nextInt(11))
 			def curr = head
-			def total = rand.nextInt(11)
+			def total = rand.nextInt(11) + 1
 			def expectedNode = null
 			for(int i=0;i< total; ++i) {
 				curr.next = new ListNode<Integer>(rand.nextInt(11))
