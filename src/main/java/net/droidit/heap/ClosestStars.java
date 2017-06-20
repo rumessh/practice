@@ -1,39 +1,53 @@
 package net.droidit.heap;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class ClosestStars {
-	
-	private PriorityQueue<Star> priorityQueue;
-	private int max;
-	
-	public ClosestStars(int k) {
-		priorityQueue = new PriorityQueue<>(k, Collections.reverseOrder());
-		max = k;
-	}
-	
-	public List<Star> findClosestStars(ObjectInputStream ois) {
-		List<Star> orderedStars = new ArrayList<>(priorityQueue);
-		
-		try {
-			while(true) {
-				Star curr = (Star) ois.readObject();
-				priorityQueue.offer(curr);
-				if(priorityQueue.size() == max + 1 ) {
-					priorityQueue.remove();
-				}
-			}
-		} catch(ClassNotFoundException | IOException e) {
-			
-		}
-		
-		Collections.sort(orderedStars);
-		
-		return orderedStars;
-	}
+
+	public static List<Star> findCLosestStars(Iterator<Star> stars, int k) {
+	    List<Star> closestStars = null;
+        PriorityQueue<Star> maxHeap = new PriorityQueue<>(k, Collections.reverseOrder());
+
+        while(stars.hasNext()) {
+            Star star = stars.next();
+            maxHeap.add(star);
+
+            if(maxHeap.size() == k + 1) {
+                maxHeap.remove();
+            }
+        }
+
+        closestStars = new ArrayList<>(maxHeap);
+
+        Collections.sort(closestStars);
+
+        return closestStars;
+    }
+}
+
+class Star implements Comparable<Star> {
+
+    private int x;
+    private int y;
+    private int z;
+
+    public Star(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    public double distance() {
+        return Math.sqrt(x * x + y * y + z * z);
+    }
+
+    @Override
+    public int compareTo(Star s) {
+        return Double.compare(this.distance(), s.distance());
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + "," + z + ")";
+    }
 }
